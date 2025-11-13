@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { MenuAuth } from "@/modules/authentication/components";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +26,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
-        {children}
+        <MenuAuth />
+        <main className="flex min-h-screen-height-with-navbar w-dvw bg-white dark:bg-black flex-col items-center justify-between px-16 sm:items-start">
+          {children}
+        </main>
       </body>
     </html>
   );

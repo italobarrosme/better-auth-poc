@@ -12,6 +12,20 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Utility customizada para altura da tela menos navbar
+   Calcula dinamicamente: 100vh - altura do header (MenuAuth)
+   O header tem p-8 (2rem top + 2rem bottom = 4rem) + altura do conteúdo interno
+   Estimativa: ~7rem total, mas pode ser ajustado conforme necessário
+*/
+@utility h-screen-height-with-navbar {
+  height: calc(100vh - 7rem);
+}
+
+/* Versão usando min-height se preferir */
+@utility min-h-screen-height-with-navbar {
+  min-height: calc(100vh - 7rem);
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;

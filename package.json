@@ -7,21 +7,35 @@
     "build": "next build",
     "start": "next start",
     "lint": "biome check",
-    "format": "biome format --write"
+    "format": "biome format --write",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "db:restart": "docker compose down && docker compose up -d",
+    "db:logs": "docker compose logs -f",
+    "db:exec": "docker compose exec postgres psql -U postgres -d better_auth",
+    "db:reset": "docker compose down && docker compose up -d",
+    "prisma:migrate": "npx prisma migrate dev --name init",
+    "prisma:generate": "npx prisma generate",
+    "prisma:studio": "npx prisma studio",
+    "db:switch:sqlite": "node scripts/switch-db.js sqlite && npm run prisma:generate",
+    "db:switch:postgresql": "node scripts/switch-db.js postgresql && npm run prisma:generate"
   },
   "dependencies": {
+    "@prisma/client": "^6.19.0",
+    "better-auth": "^1.3.34",
+    "next": "16.0.2",
     "react": "19.2.0",
-    "react-dom": "19.2.0",
-    "next": "16.0.2"
+    "react-dom": "19.2.0"
   },
   "devDependencies": {
-    "babel-plugin-react-compiler": "1.0.0",
-    "typescript": "^5",
+    "@biomejs/biome": "2.2.0",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
+    "babel-plugin-react-compiler": "1.0.0",
+    "prisma": "^6.19.0",
     "tailwindcss": "^4",
-    "@biomejs/biome": "2.2.0"
+    "typescript": "^5"
   }
 }
